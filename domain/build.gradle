@@ -1,0 +1,7 @@
+apply plugin: 'kotlin'
+
+dependencies {
+    compile deps.kotlin
+    compile deps.rxjava
+    compile deps.rxkotlin
+}

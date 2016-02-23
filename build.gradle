@@ -1,0 +1,85 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.5.0'
+    }
+}
+
+allprojects {
+    buildscript {
+        ext.kotlin_version = '1.0.0'
+    }
+
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven { url "https://clojars.org/repo/" }
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+subprojects {
+    buildscript {
+        repositories {
+            mavenCentral()
+        }
+
+        dependencies {
+            classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext.deps = [
+    // Kotlin
+    kotlin: "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+
+    // Android
+    support_annotations: 'com.android.support:support-annotations:23.1.1',
+    app_compat: 'com.android.support:appcompat-v7:23.1.1',
+
+    // ButterKnife
+    butterknife: 'com.jakewharton:butterknife:7.0.1',
+
+    // Dagger
+    dagger: 'com.google.dagger:dagger:2.0.2',
+    dagger_compiler: 'com.google.dagger:dagger-compiler:2.0.2',
+    glassfish_annotations: 'org.glassfish:javax.annotation:10.0-b28',
+
+    // PaperParcel
+    paperparcel: 'com.github.grandstaish.paperparcel:paperparcel:1.0.0-beta1',
+    paperparcel_compiler: 'com.github.grandstaish.paperparcel:compiler:1.0.0-beta1',
+
+    // Retrofit / OkHttp / Moshi / RxJava
+    retrofit: 'com.squareup.retrofit2:retrofit:2.0.0-beta4',
+    moshi_converter: 'com.squareup.retrofit2:converter-moshi:2.0.0-beta4',
+    okhttp: 'com.squareup.okhttp3:okhttp:3.1.2',
+    okhttp_logging: 'com.squareup.okhttp3:logging-interceptor:3.1.2',
+    moshi: 'com.squareup.moshi:moshi:1.1.0',
+    adapter_rxjava: 'com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4',
+    rxjava: 'io.reactivex:rxjava:1.1.1',
+    rxandroid: 'io.reactivex:rxandroid:1.1.0',
+    rxkotlin: 'io.reactivex:rxkotlin:0.40.1',
+
+    // ThreeTenABP
+    threeten: 'com.jakewharton.threetenabp:threetenabp:1.0.3',
+
+    // Unit test dependencies
+    junit: 'junit:junit:4.12',
+    robolectric: 'org.robolectric:robolectric:3.0',
+    mockito: 'org.mockito:mockito-core:1.9.5',
+
+    // Integration test dependencies
+    testrunner: 'com.android.support.test:runner:0.3',
+    testrules: 'com.android.support.test:rules:0.3',
+    espresso: 'com.android.support.test.espresso:espresso-core:2.2',
+    dexmaker: 'com.google.dexmaker:dexmaker:1.2',
+    dexmaker_mockito: 'com.google.dexmaker:dexmaker-mockito:1.2',
+    spoon: 'com.squareup.spoon:spoon-client:1.1.9'
+]
