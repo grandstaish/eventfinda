@@ -53,6 +53,7 @@ dependencies {
     compile deps.paperparcel
     kapt deps.paperparcel_compiler
     compile deps.rxandroid
+    compile deps.threeten_abp
 
     testCompile deps.junit
     testCompile deps.robolectric
