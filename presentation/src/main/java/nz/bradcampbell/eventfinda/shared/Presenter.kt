@@ -1,4 +1,4 @@
-package nz.bradcampbell.eventfinda.presentation.shared
+package nz.bradcampbell.eventfinda.shared
 
 interface Presenter<T> {
   fun bind(view: T)

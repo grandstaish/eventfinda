@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatDelegate
 import dagger.Module
 import dagger.Provides
 import nz.bradcampbell.eventfinda.domain.events.EventsInteractor
-import nz.bradcampbell.eventfinda.presentation.events.EventsPresenter
+import nz.bradcampbell.eventfinda.events.EventsPresenter
 
 @Module
 class MainActivityModule(val activity: MainActivity) {

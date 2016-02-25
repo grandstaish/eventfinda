@@ -2,6 +2,7 @@ package nz.bradcampbell.eventfinda.shared.app
 
 import android.app.Application
 import com.jakewharton.threetenabp.AndroidThreeTen
+import com.squareup.leakcanary.LeakCanary
 import nz.bradcampbell.eventfinda.domain.events.EventsInteractor
 import javax.inject.Inject
 
@@ -14,6 +15,7 @@ class App : Application() {
     super.onCreate()
 
     AndroidThreeTen.init(this);
+    LeakCanary.install(this);
 
     appComponent = DaggerAppComponent.builder()
       .appDataModule(AppDataModule())

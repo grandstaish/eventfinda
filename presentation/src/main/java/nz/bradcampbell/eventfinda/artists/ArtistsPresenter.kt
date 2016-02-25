@@ -1,6 +1,6 @@
-package nz.bradcampbell.eventfinda.presentation.artists
+package nz.bradcampbell.eventfinda.artists
 
-import nz.bradcampbell.eventfinda.presentation.shared.Presenter
+import nz.bradcampbell.eventfinda.shared.Presenter
 
 class ArtistsPresenter : Presenter<ArtistsContract> {
   override fun bind(view: ArtistsContract) {

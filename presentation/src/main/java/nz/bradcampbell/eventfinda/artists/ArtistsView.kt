@@ -1,15 +1,13 @@
-package nz.bradcampbell.eventfinda.events
+package nz.bradcampbell.eventfinda.artists
 
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
-import nz.bradcampbell.eventfinda.presentation.events.EventsContract
-import nz.bradcampbell.eventfinda.presentation.events.EventsPresenter
+import nz.bradcampbell.eventfinda.artists.ArtistsContract
 import nz.bradcampbell.eventfinda.shared.activity.MainActivityComponent
-import javax.inject.Inject
 
-class EventsView : FrameLayout, EventsContract {
-  @Inject lateinit var presenter: EventsPresenter
+class ArtistsView : FrameLayout, ArtistsContract {
+//  @Inject lateinit var presenter: ArtistsPresenter
 
   constructor(context: Context, attrs: AttributeSet, component: MainActivityComponent) : super(context, attrs) {
     component.inject(this)
@@ -17,11 +15,11 @@ class EventsView : FrameLayout, EventsContract {
 
   override fun onAttachedToWindow() {
     super.onAttachedToWindow()
-    presenter.bind(this)
+//    presenter.bind(this)
   }
 
   override fun onDetachedFromWindow() {
     super.onDetachedFromWindow()
-    presenter.unbind()
+//    presenter.unbind()
   }
 }

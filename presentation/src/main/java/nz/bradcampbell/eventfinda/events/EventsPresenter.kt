@@ -1,7 +1,7 @@
-package nz.bradcampbell.eventfinda.presentation.events
+package nz.bradcampbell.eventfinda.events
 
 import nz.bradcampbell.eventfinda.domain.events.EventsInteractor
-import nz.bradcampbell.eventfinda.presentation.shared.Presenter
+import nz.bradcampbell.eventfinda.shared.Presenter
 import rx.Subscription
 import rx.subscriptions.Subscriptions
 
@@ -14,14 +14,27 @@ class EventsPresenter(val interactor: EventsInteractor) : Presenter<EventsContra
   override fun bind(view: EventsContract) {
     this.view = view
 
+    view.showLoading()
+
     eventsSubscription = interactor.eventStream()
-      .subscribe { response -> System.out.println(response.toString()) }
+      .subscribe {
+        view.hideLoading()
+        view.displayEvents(it)
+      }
 
     errorsSubscription = interactor.errorStream()
-      .subscribe { response -> System.out.println(response.toString()) }
+      .subscribe {
+        view.hideLoading()
+        view.displayError(it)
+      }
   }
 
   override fun unbind() {
     this.view = null
+  }
+
+  fun refresh() {
+    view?.showLoading()
+    interactor.loadEvents()
   }
 }

@@ -54,4 +54,4 @@ data class Artist(val id: Int)
 
 data class Images(val images: Array<Image>)
 
-data class Image(val id: Int)
+data class Image(val id: Int?)
